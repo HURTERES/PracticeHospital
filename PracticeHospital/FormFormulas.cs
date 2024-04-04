@@ -64,16 +64,21 @@ namespace PracticeHospital
             // Просчет коэффициента загрузки всех врачей за час, если показатель = 1, тогда все перегружены
             // Для демонстации изменить 60 на 5(мин) и необходимо, чтобы кол-во пациентов было >=4 
             KefZagruzki = Intensivnost / (m*IntensivnostObsluz)/60;
-            LblKefZagr.Text = KefZagruzki.ToString();
+            if (KefZagruzki.ToString().Length>5)
+                LblKefZagr.Text = KefZagruzki.ToString().Substring(0,5);
+            else LblKefZagr.Text = KefZagruzki.ToString();
 
 
             //SrednZayavok = Intensivnost * IntensivnostObsluz;
             SrednZayavok = (Intensivnost * Intensivnost) / m * (IntensivnostObsluz * (m * KefZagruzki));
-            if (SrednZayavok.ToString().Length > 4)
-                LblSrednZayavok.Text = SrednZayavok.ToString().Substring(0, 4);
+            if (SrednZayavok.ToString().Length > 5)
+                LblSrednZayavok.Text = SrednZayavok.ToString().Substring(0, 5);
             else LblSrednZayavok.Text = SrednZayavok.ToString();
 
-            LblTimeOzid.Text = (SrednZayavok / Intensivnost).ToString() + " мин";
+
+            if((SrednZayavok / Intensivnost).ToString().Length>5)
+                LblTimeOzid.Text = (SrednZayavok / Intensivnost).ToString().Substring(0,5) + " мин";
+            else LblTimeOzid.Text = (SrednZayavok / Intensivnost).ToString() + " мин";
 
             if (KefZagruzki >= 1)
                 LblNote2.Text = "Все доступные врачи на текущий час заняты, пожалуйста, примите меры!";

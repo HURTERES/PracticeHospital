@@ -89,7 +89,7 @@ namespace PracticeHospital
         {
             DateTime Dt = DateTime.Now;
             DateTime Fdt = DateTime.Parse(Dt.ToString("dd/MM/yyyy HH:mm:ss"));
-            Fdt = Fdt.AddMinutes(LstDoctors.Count*5);
+            Fdt = Fdt.AddMinutes(Count*5);
 
             using (SqlConnection Con = new SqlConnection(Form1.TxtCon))
             {
@@ -121,9 +121,9 @@ namespace PracticeHospital
             else BtnComplete.Enabled = false;
         }
 
+        int Count = 0;
         private void CmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int Count = 0;
             for (int i = 0; i < LstDoctors.Count; i++)
                 if (LstDoctors[i].Split('&')[1] == CmbDoctor.Text)
                     Count++;
