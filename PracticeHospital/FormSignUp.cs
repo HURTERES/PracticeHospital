@@ -124,6 +124,7 @@ namespace PracticeHospital
         int Count = 0;
         private void CmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Count = 0;
             for (int i = 0; i < LstDoctors.Count; i++)
                 if (LstDoctors[i].Split('&')[1] == CmbDoctor.Text)
                     Count++;
