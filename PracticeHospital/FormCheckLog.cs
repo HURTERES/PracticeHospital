@@ -91,7 +91,7 @@ namespace PracticeHospital
 
         private void BtnEnter_Click(object sender, EventArgs e)
         {
-            if (RtbxLogin.Text == "admin" && RtbxPass.Text == "admin")
+            if (RtbxLogin.Text == "a" && RtbxPass.Text == "a")
             {
                 Form1.Key = 1;
                 MessageBox.Show("Права админа активированы");

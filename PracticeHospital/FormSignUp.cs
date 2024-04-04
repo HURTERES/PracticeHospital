@@ -55,7 +55,7 @@ namespace PracticeHospital
                             int requestId = int.Parse(Res["IdRequest"].ToString());
                             using (SqlConnection ConTwo = new SqlConnection(Form1.TxtCon))
                             {
-                                SqlCommand command = new SqlCommand($"DELETE FROM Request WHERE IdRequest = {requestId}", ConTwo);
+                                SqlCommand command = new SqlCommand($"update Request set State='Old' where IdRequest = {requestId}", ConTwo);
                                 ConTwo.Open();
                                 command.ExecuteNonQuery();
                                 ConTwo.Close();
@@ -89,12 +89,12 @@ namespace PracticeHospital
         {
             DateTime Dt = DateTime.Now;
             DateTime Fdt = DateTime.Parse(Dt.ToString("dd/MM/yyyy HH:mm:ss"));
-            Fdt = Fdt.AddMinutes(5);
+            Fdt = Fdt.AddMinutes(LstDoctors.Count*5);
 
             using (SqlConnection Con = new SqlConnection(Form1.TxtCon))
             {
                 string CurrentSNILS = $"{Rtbx1.Text}-{Rtbx2.Text}-{Rtbx3.Text} {Rtbx4.Text}";
-                string query = "INSERT INTO Request (TimeRequest, Region, FIO, SNILS, Doctor) VALUES (@Fdt, @Region, @FIO, @SNILS, @Doctor)";
+                string query = "INSERT INTO Request (TimeRequest, Region, FIO, SNILS, Doctor, State) VALUES (@Fdt, @Region, @FIO, @SNILS, @Doctor, @State)";
 
                 using (SqlCommand Cmd = new SqlCommand(query, Con))
                 {
@@ -103,6 +103,7 @@ namespace PracticeHospital
                     Cmd.Parameters.AddWithValue("@FIO", RtbxFIO.Text);
                     Cmd.Parameters.AddWithValue("@SNILS", CurrentSNILS);
                     Cmd.Parameters.AddWithValue("@Doctor", CmbDoctor.Text);
+                    Cmd.Parameters.AddWithValue("@State", "New");
 
                     Con.Open();
                     Cmd.ExecuteNonQuery();
@@ -130,10 +131,10 @@ namespace PracticeHospital
             LblQueue.Text = Count + " чел.";
 
             DateTime Dt = DateTime.Now;
-            DateTime DtEndDay= DateTime.Parse(Dt.ToString("yyyy-MM-dd 18:00"));
+            DateTime DtEndDay = DateTime.Parse(Dt.ToString("yyyy-MM-dd 18:00"));
             DateTime Fdt = DateTime.Parse(Dt.ToString("yyyy-MM-dd HH:mm"));
-            Fdt=Fdt.AddMinutes(Count*5);
-            if (Fdt >= DtEndDay && CmbDoctor.SelectedIndex!=-1)
+            Fdt = Fdt.AddMinutes(Count * 5);
+            if (Fdt >= DtEndDay && CmbDoctor.SelectedIndex != -1)
             {
                 MessageBox.Show("Конец рабочего дня, запись невозможна");
                 CmbDoctor.SelectedIndex = -1;

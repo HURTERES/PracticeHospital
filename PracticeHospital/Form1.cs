@@ -33,10 +33,14 @@ namespace PracticeHospital
             {
                 FormSignUp Frm = new FormSignUp();
                 Frm.ShowDialog();
-                this.requestTableAdapter.Update(this.practiceHospitalDataSet1.Request);
+                this.requestTableAdapter.Fill(this.practiceHospitalDataSet1.Request);
             }
             else
-                DgvPatients.Visible = true;                
+            {
+                Btnefficiency.Visible = false;
+                DgvPatients.Visible = true;
+            }
+              
         }
         public static int Key = 0;
         private void label4_Click(object sender, EventArgs e)
@@ -47,6 +51,7 @@ namespace PracticeHospital
                 Frm.ShowDialog();
                 if (Key == 1)
                 {
+                    Btnefficiency.Visible = true;
                     BtnEnter.Text = "Просмотр записей";
                     Key = 0;
                 }
@@ -55,8 +60,15 @@ namespace PracticeHospital
             else
             {
                 DgvPatients.Visible = false;
+                Btnefficiency.Visible = false;
                 BtnEnter.Text = "Записаться на прием";
             }
+        }
+
+        private void Btnefficiency_Click(object sender, EventArgs e)
+        {
+            FormFormulas Frm = new FormFormulas();
+            Frm.ShowDialog();
         }
     }
 }

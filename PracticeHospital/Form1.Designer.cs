@@ -36,8 +36,10 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.BtnEnter = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.requestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.practiceHospitalDataSet1 = new PracticeHospital.PracticeHospitalDataSet1();
+            this.label4 = new System.Windows.Forms.Label();
+            this.requestTableAdapter = new PracticeHospital.PracticeHospitalDataSet1TableAdapters.RequestTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DgvPatients = new System.Windows.Forms.DataGridView();
             this.idRequestDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,16 +48,15 @@
             this.fIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sNILSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requestBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.practiceHospitalDataSet1 = new PracticeHospital.PracticeHospitalDataSet1();
-            this.label4 = new System.Windows.Forms.Label();
-            this.requestTableAdapter = new PracticeHospital.PracticeHospitalDataSet1TableAdapters.RequestTableAdapter();
+            this.BtnEnter = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Btnefficiency = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvPatients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.practiceHospitalDataSet1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvPatients)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -108,39 +109,31 @@
             this.label2.Text = "Мы заботимся о вашем здоровье";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BtnEnter
+            // requestBindingSource
             // 
-            this.BtnEnter.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnEnter.BackColor = System.Drawing.Color.DarkCyan;
-            this.BtnEnter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.BtnEnter.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnEnter.FlatAppearance.BorderSize = 0;
-            this.BtnEnter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.BtnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnEnter.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BtnEnter.ForeColor = System.Drawing.Color.White;
-            this.BtnEnter.Location = new System.Drawing.Point(661, 374);
-            this.BtnEnter.Name = "BtnEnter";
-            this.BtnEnter.Size = new System.Drawing.Size(302, 46);
-            this.BtnEnter.TabIndex = 4;
-            this.BtnEnter.Text = "Записаться на прием";
-            this.BtnEnter.UseVisualStyleBackColor = false;
-            this.BtnEnter.Click += new System.EventHandler(this.button1_Click);
+            this.requestBindingSource.DataMember = "Request";
+            this.requestBindingSource.DataSource = this.practiceHospitalDataSet1;
+            this.requestBindingSource.Filter = "State=\'New\'";
             // 
-            // label3
+            // practiceHospitalDataSet1
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(13, 183);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(648, 165);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Медосмотры\r\nКомплексное обследование\r\nЛабораторные исследования\r\n";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.practiceHospitalDataSet1.DataSetName = "PracticeHospitalDataSet1";
+            this.practiceHospitalDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(12, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 31);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "🔓";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // requestTableAdapter
+            // 
+            this.requestTableAdapter.ClearBeforeFill = true;
             // 
             // panel1
             // 
@@ -149,6 +142,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::PracticeHospital.Properties.Resources.Hi_I9H4Uorc__1_;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.Btnefficiency);
             this.panel1.Controls.Add(this.DgvPatients);
             this.panel1.Controls.Add(this.BtnEnter);
             this.panel1.Controls.Add(this.label3);
@@ -266,30 +260,59 @@
             this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
             this.doctorDataGridViewTextBoxColumn.Width = 166;
             // 
-            // requestBindingSource
+            // BtnEnter
             // 
-            this.requestBindingSource.DataMember = "Request";
-            this.requestBindingSource.DataSource = this.practiceHospitalDataSet1;
+            this.BtnEnter.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnEnter.BackColor = System.Drawing.Color.DarkCyan;
+            this.BtnEnter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BtnEnter.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnEnter.FlatAppearance.BorderSize = 0;
+            this.BtnEnter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.BtnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnEnter.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnEnter.ForeColor = System.Drawing.Color.White;
+            this.BtnEnter.Location = new System.Drawing.Point(661, 374);
+            this.BtnEnter.Name = "BtnEnter";
+            this.BtnEnter.Size = new System.Drawing.Size(302, 46);
+            this.BtnEnter.TabIndex = 4;
+            this.BtnEnter.Text = "Записаться на прием";
+            this.BtnEnter.UseVisualStyleBackColor = false;
+            this.BtnEnter.Click += new System.EventHandler(this.button1_Click);
             // 
-            // practiceHospitalDataSet1
+            // label3
             // 
-            this.practiceHospitalDataSet1.DataSetName = "PracticeHospitalDataSet1";
-            this.practiceHospitalDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(13, 183);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(648, 165);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Медосмотры\r\nКомплексное обследование\r\nЛабораторные исследования\r\n";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // Btnefficiency
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 31);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "🔓";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // requestTableAdapter
-            // 
-            this.requestTableAdapter.ClearBeforeFill = true;
+            this.Btnefficiency.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Btnefficiency.BackColor = System.Drawing.Color.DarkCyan;
+            this.Btnefficiency.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Btnefficiency.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Btnefficiency.FlatAppearance.BorderSize = 0;
+            this.Btnefficiency.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.Btnefficiency.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btnefficiency.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btnefficiency.ForeColor = System.Drawing.Color.White;
+            this.Btnefficiency.Location = new System.Drawing.Point(131, 374);
+            this.Btnefficiency.Name = "Btnefficiency";
+            this.Btnefficiency.Size = new System.Drawing.Size(441, 46);
+            this.Btnefficiency.TabIndex = 8;
+            this.Btnefficiency.Text = "Эффективность процессов\r\n";
+            this.Btnefficiency.UseVisualStyleBackColor = false;
+            this.Btnefficiency.Visible = false;
+            this.Btnefficiency.Click += new System.EventHandler(this.Btnefficiency_Click);
             // 
             // Form1
             // 
@@ -312,11 +335,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.practiceHospitalDataSet1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvPatients)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.requestBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.practiceHospitalDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,6 +365,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fIODataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sNILSDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button Btnefficiency;
     }
 }
 

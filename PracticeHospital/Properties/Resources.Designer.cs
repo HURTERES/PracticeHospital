@@ -63,6 +63,16 @@ namespace PracticeHospital.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Analisys {
+            get {
+                object obj = ResourceManager.GetObject("Analisys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hi_I9H4Uorc {
             get {
                 object obj = ResourceManager.GetObject("Hi-I9H4Uorc", resourceCulture);

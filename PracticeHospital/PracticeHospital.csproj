@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,6 +73,12 @@
     </Compile>
     <Compile Include="FormCheckLog.Designer.cs">
       <DependentUpon>FormCheckLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFormulas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFormulas.Designer.cs">
+      <DependentUpon>FormFormulas.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSignUp.cs">
       <SubType>Form</SubType>
@@ -96,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCheckLog.resx">
       <DependentUpon>FormCheckLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFormulas.resx">
+      <DependentUpon>FormFormulas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSignUp.resx">
       <DependentUpon>FormSignUp.cs</DependentUpon>
@@ -165,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Hi-I9H4Uorc %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Analisys.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
